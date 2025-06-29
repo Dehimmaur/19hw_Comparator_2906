@@ -13,7 +13,7 @@ public class OddEvenComparatorTest {
     Integer[] origin;
     Integer[] expected;
     OddEvenComparator comparator;
-    
+
     @BeforeEach
     void setUp() {
         origin = new Integer[] {1,2,3,4,5,6,7,8,9,3};
@@ -32,9 +32,9 @@ public class OddEvenComparatorTest {
     @Test
     void  testOddEvenRandom() {
         Random random = new Random();
-        final Integer SIZE = 50;
+        final int SIZE = 50;
 
-        Integer[] arr = new Integer[50];
+        Integer[] arr = new Integer[SIZE];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(1, 101);
         }
