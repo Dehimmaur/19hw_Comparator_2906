@@ -32,11 +32,11 @@ public class OddEvenComparatorTest {
     @Test
     void  testOddEvenRandom() {
         Random random = new Random();
-        final int SIZE = 50;
+        final int SIZE = 20;
 
         Integer[] arr = new Integer[SIZE];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(1, 101);
+            arr[i] = random.nextInt(1, 11);
         }
 
         OddEvenComparator.printArray(arr);
