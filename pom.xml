@@ -26,6 +26,8 @@
     </dependencies>
 
     <build>
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>src</testSourceDirectory>
 		<testSourceDirectory>src/telran/comparator/tests</testSourceDirectory>
         <plugins>
             <!-- Maven Surefire Plugin для запуска тестов -->
