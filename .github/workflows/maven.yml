@@ -1,4 +1,4 @@
-name: Java CI with Maven (Matrix)
+name: Java CI Workflow
 
 on:
   push:
@@ -7,6 +7,26 @@ on:
     branches: [ "master" ]
 
 jobs:
+  build:
+    name: Сборка проекта
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Клонировать репозиторий
+        uses: actions/checkout@v4
+
+      - name: Установить JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Сборка с помощью Maven
+        run: mvn -B package --file pom.xml
+        
+        
+        
   test:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -14,8 +34,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         java: [11, 17, 21]
         exclude:
-          - os: macos-latest
-           # java: 11  # исключим, если не нужно
+           java: 11  # исключим, если не нужно
 
     name: Test on ${{ matrix.os }} with Java ${{ matrix.java }}
 
