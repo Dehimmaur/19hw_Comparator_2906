@@ -24,28 +24,26 @@ jobs:
 
       - name: Сборка с помощью Maven
         run: mvn -B package --file pom.xml
-        
-        
-        
+
   test:
+    name: Тестирование на ${{ matrix.os }} с Java ${{ matrix.java }}
+    needs: build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         java: [11, 17, 21]
         exclude:
-           java: 11  # исключим, если не нужно
-
-    name: Test on ${{ matrix.os }} with Java ${{ matrix.java }}
+          - java: 11
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Java
+      - name: Установка Java
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
 
-      - name: Build and Test with Maven
+      - name: Запуск тестов Maven
         run: mvn clean test
